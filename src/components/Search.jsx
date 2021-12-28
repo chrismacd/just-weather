@@ -2,20 +2,24 @@ import { useState, useEffect } from 'react';
 
 const data = require('../data/city.list.min.json');
 
+function searchResults(text) {
+  if (text.length >= 3) {
+    const regex = new RegExp(`^${text.toLowerCase()}`, 'g');
+    const results = data.filter((city) => {
+      return city.name.toLowerCase().search(regex) > -1;
+    });
+
+    return results.sort((a, b) => (a.name < b.name ? -1 : 1));
+  }
+
+  return [];
+}
+
 function Search() {
   const [text, setText] = useState('');
 
   useEffect(() => {
-    console.log(text);
-
-    if (text.length >= 3) {
-      const regex = new RegExp(`^${text.toLowerCase()}`, 'g');
-      const results = data.filter((city) => {
-        return city.name.toLowerCase().search(regex) > -1;
-      });
-
-      console.log(results.sort((a, b) => (a.name < b.name ? -1 : 1)));
-    }
+    console.log(text, searchResults(text));
   }, [text]);
 
   return (
