@@ -1,5 +1,5 @@
-const Details = () => {
+function Details() {
   return <div />;
-};
+}
 
 export default Details;
