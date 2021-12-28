@@ -1,7 +1,13 @@
-import './App.css';
+import './App.scss';
 
 function App() {
-  return <></>;
+  return (
+    <div className='app'>
+      <Search />
+      <Details />
+      <Favourites />
+    </div>
+  );
 }
 
 export default App;
