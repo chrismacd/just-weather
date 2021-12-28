@@ -4,9 +4,9 @@ const data = require('../data/city.list.min.json');
 
 function searchResults(text) {
   if (text.length >= 3) {
-    const regex = new RegExp(`^${text.toLowerCase()}`, 'g');
+    const regex = new RegExp(`^${text}`, 'gi');
     const results = data.filter((city) => {
-      return city.name.toLowerCase().search(regex) > -1;
+      return city.name.search(regex) > -1;
     });
 
     return results.sort((a, b) => (a.name < b.name ? -1 : 1));
