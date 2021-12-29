@@ -33,18 +33,16 @@ function Search({ handleChangeCity }) {
   }, [results]);
 
   return (
-    <div className='search'>
-      <label htmlFor='s'>
-        <p>City search</p>
-        <input
-          type='text'
-          name='s'
-          id='s'
-          className='border w-full max-w-xs h-10 px-3'
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-        />
-      </label>
+    <div className='search relative max-w-xs'>
+      <input
+        type='text'
+        name='s'
+        id='s'
+        placeholder='Search for a city'
+        className='border border-darkblue rounded w-full h-12 px-3 text-lg'
+        value={text}
+        onChange={(e) => setText(e.target.value)}
+      />
       {debounceText && (
         <SearchResults cities={results} handleChangeCity={handleChangeCity} />
       )}
