@@ -45,7 +45,7 @@ function Search() {
           onChange={(e) => setText(e.target.value)}
         />
       </label>
-      <SearchResults cities={results} />
+      {debounceText && <SearchResults cities={results} />}
     </div>
   );
 }
