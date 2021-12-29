@@ -1,12 +1,18 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 const useFetchWeather = (id) => {
+  const cache = useRef({});
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    if (id > 0) {
+    if (!id) return;
+
+    if (cache.current[id]) {
+      const weather = cache.current[id];
+      setData(weather);
+    } else {
       fetch(
         `https://api.openweathermap.org/data/2.5/weather?id=${id}&appid=a61518b113182a0a4b4cc2468498c201`
       )
@@ -24,6 +30,7 @@ const useFetchWeather = (id) => {
             windSpeed: apiData.wind.speed,
           };
 
+          cache.current[id] = weather;
           setData(weather);
           setIsLoading(false);
           setError(null);
