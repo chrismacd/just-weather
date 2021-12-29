@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useDebounce } from 'use-debounce';
+import SearchResults from './SearchResults';
 
 const data = require('../data/city.list.min.json');
 
@@ -44,6 +45,7 @@ function Search() {
           onChange={(e) => setText(e.target.value)}
         />
       </label>
+      <SearchResults cities={results} />
     </div>
   );
 }
