@@ -22,4 +22,11 @@ module.exports = {
   rules: {
     'react/react-in-jsx-scope': 'off',
   },
+  settings: {
+    'import/core-modules': [],
+    'import/ignore': [
+      'node_modules',
+      '\\.(coffee|scss|css|less|hbs|svg|json)$',
+    ],
+  },
 };
