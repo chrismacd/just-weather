@@ -7,10 +7,7 @@ function Search({ handleChangeCity }) {
   const minlength = 3;
   const [value, setValue] = useState('');
   const [debouncedValue, setDebouncedValue] = useState('');
-  const { data: searchResults, isLoading } = useFilterCities(
-    debouncedValue,
-    minlength
-  );
+  const { data: searchResults } = useFilterCities(debouncedValue, minlength);
 
   const debounced = useDebouncedCallback((val) => {
     setDebouncedValue(val);
@@ -40,7 +37,7 @@ function Search({ handleChangeCity }) {
         className='border border-darkblue rounded w-full h-12 px-3 text-lg'
         onChange={(e) => handleInputChange(e.target.value)}
       />
-      {debouncedValue.length >= minlength && !isLoading && (
+      {debouncedValue.length >= minlength && (
         <SearchResults cities={searchResults} handleChange={handleChange} />
       )}
     </div>
