@@ -37,7 +37,7 @@ function Search({ handleChangeCity }) {
         className='border border-darkblue rounded w-full h-12 px-3 text-lg'
         onChange={(e) => handleInputChange(e.target.value)}
       />
-      {debouncedValue.length >= minlength && (
+      {searchResults && (
         <SearchResults cities={searchResults} handleChange={handleChange} />
       )}
     </div>

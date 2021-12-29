@@ -1,6 +1,8 @@
 import Flag from './Flag';
 
 function SearchResults({ cities, handleChange }) {
+  console.log(`SearchResults: ${cities}`);
+
   return (
     <div className='results bg-white border border-lightblue max-h-96 overflow-auto absolute left-0 top-14 w-full rounded'>
       {cities.length > 0 &&
