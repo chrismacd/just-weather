@@ -4,8 +4,10 @@ import SearchResults from './SearchResults';
 
 const data = require('../data/city.list.min.json');
 
+const minlength = 3;
+
 function filterCities(text) {
-  if (text.length >= 3) {
+  if (text.length >= minlength) {
     const regex = new RegExp(`^${text}`, 'gi');
     const filtered = data.filter((city) => {
       return city.name.search(regex) > -1;
@@ -51,10 +53,13 @@ function Search({ handleChangeCity }) {
         name='s'
         id='s'
         placeholder='Search for a city'
+        autoComplete='off'
         className='border border-darkblue rounded w-full h-12 px-3 text-lg'
         onChange={(e) => debounced(e.target.value)}
       />
-      {value && <SearchResults cities={results} handleChange={handleChange} />}
+      {value.length >= minlength && (
+        <SearchResults cities={results} handleChange={handleChange} />
+      )}
     </div>
   );
 }
