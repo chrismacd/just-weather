@@ -17,7 +17,7 @@ function filterCities(text) {
   return [];
 }
 
-function Search() {
+function Search({ handleChangeCity }) {
   const [text, setText] = useState('');
   const [results, setResults] = useState([]);
   const [debounceText] = useDebounce(text, 500);
@@ -45,7 +45,9 @@ function Search() {
           onChange={(e) => setText(e.target.value)}
         />
       </label>
-      {debounceText && <SearchResults cities={results} />}
+      {debounceText && (
+        <SearchResults cities={results} handleChangeCity={handleChangeCity} />
+      )}
     </div>
   );
 }

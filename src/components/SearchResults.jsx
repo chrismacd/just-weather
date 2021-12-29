@@ -1,10 +1,6 @@
 import Flag from './Flag';
 
-function SearchResults({ cities }) {
-  function onClick(id) {
-    console.log(id);
-  }
-
+function SearchResults({ cities, handleChangeCity }) {
   return (
     <div className='results border'>
       {cities.length > 0 &&
@@ -14,7 +10,7 @@ function SearchResults({ cities }) {
               <button
                 className='text-sm flex w-full items-center'
                 type='button'
-                onClick={() => onClick(city.id)}
+                onClick={() => handleChangeCity(city.id)}
               >
                 <Flag countryCode={city.country} />
                 <span>

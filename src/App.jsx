@@ -9,6 +9,8 @@ function App() {
 
   const handleChangeCity = (id) => {
     setCity(id);
+
+    console.log(id);
   };
 
   return (
