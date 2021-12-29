@@ -15,6 +15,7 @@ function SearchResults({ cities }) {
             onClick={() => onClick(city.id)}
           >
             {city.name}
+            {city.state && `, ${city.state}`}
           </button>
         </div>
       ))}
