@@ -2,7 +2,7 @@ import Flag from './Flag';
 
 function SearchResults({ cities, handleChangeCity }) {
   return (
-    <div className='results border'>
+    <div className='results border max-h-96 overflow-auto'>
       {cities.length > 0 &&
         cities.map((city) => {
           return (
