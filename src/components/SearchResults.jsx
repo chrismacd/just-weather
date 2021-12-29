@@ -1,4 +1,4 @@
-import Flags from 'country-flag-icons/react/3x2';
+import Flag from './Flag';
 
 function SearchResults({ cities }) {
   function onClick(id) {
@@ -8,8 +8,6 @@ function SearchResults({ cities }) {
   return (
     <div className='results border'>
       {cities.map((city) => {
-        const Flag = Flags[city.country];
-
         return (
           <div className='px-2 py-1 hover:bg-lightblue' key={city.id}>
             <button
@@ -17,7 +15,7 @@ function SearchResults({ cities }) {
               type='button'
               onClick={() => onClick(city.id)}
             >
-              <Flag className='w-4 mr-2' title={city.country} />
+              <Flag countryCode={city.country} />
               <span>
                 {city.name}
                 {city.state && `, ${city.state}`}
