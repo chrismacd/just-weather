@@ -3,22 +3,28 @@ import { useDebounce } from 'use-debounce';
 
 const data = require('../data/city.list.min.json');
 
+function filterCities(text) {
+  if (text.length >= 3) {
+    const regex = new RegExp(`^${text}`, 'gi');
+    const filtered = data.filter((city) => {
+      return city.name.search(regex) > -1;
+    });
+
+    return filtered.sort((a, b) => (a.name < b.name ? -1 : 1));
+  }
+
+  return [];
+}
+
 function Search() {
   const [text, setText] = useState('');
   const [results, setResults] = useState([]);
   const [debounceText] = useDebounce(text, 500);
 
   useEffect(() => {
-    if (debounceText.length >= 3) {
-      const regex = new RegExp(`^${debounceText}`, 'gi');
-      const filtered = data.filter((city) => {
-        return city.name.search(regex) > -1;
-      });
+    const cities = filterCities(debounceText);
 
-      setResults(filtered.sort((a, b) => (a.name < b.name ? -1 : 1)));
-    } else {
-      setResults([]);
-    }
+    setResults(cities);
   }, [debounceText]);
 
   useEffect(() => {
