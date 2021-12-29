@@ -22,6 +22,13 @@ function Search({ handleChangeCity }) {
   const [results, setResults] = useState([]);
   const [debounceText] = useDebounce(text, 500);
 
+  const handleChange = (id) => {
+    handleChangeCity(id);
+
+    setText('');
+    setResults([]);
+  };
+
   useEffect(() => {
     const cities = filterCities(debounceText);
 
@@ -33,7 +40,7 @@ function Search({ handleChangeCity }) {
   }, [results]);
 
   return (
-    <div className='search relative max-w-xs'>
+    <div className='search relative max-w-xs z-20'>
       <input
         type='text'
         name='s'
@@ -44,7 +51,7 @@ function Search({ handleChangeCity }) {
         onChange={(e) => setText(e.target.value)}
       />
       {debounceText && (
-        <SearchResults cities={results} handleChangeCity={handleChangeCity} />
+        <SearchResults cities={results} handleChange={handleChange} />
       )}
     </div>
   );

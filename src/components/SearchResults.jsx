@@ -1,8 +1,8 @@
 import Flag from './Flag';
 
-function SearchResults({ cities, handleChangeCity }) {
+function SearchResults({ cities, handleChange }) {
   return (
-    <div className='results border border-lightblue max-h-96 overflow-auto absolute left-0 top-14 w-full rounded'>
+    <div className='results bg-white border border-lightblue max-h-96 overflow-auto absolute left-0 top-14 w-full rounded'>
       {cities.length > 0 &&
         cities.map((city) => {
           return (
@@ -10,7 +10,7 @@ function SearchResults({ cities, handleChangeCity }) {
               <button
                 className='text-sm flex w-full items-center'
                 type='button'
-                onClick={() => handleChangeCity(city.id)}
+                onClick={() => handleChange(city.id)}
               >
                 <Flag countryCode={city.country} />
                 <span>
