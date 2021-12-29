@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useDebounce } from 'use-debounce';
+import { useDebouncedCallback } from 'use-debounce';
 import SearchResults from './SearchResults';
 
 const data = require('../data/city.list.min.json');
@@ -18,26 +18,31 @@ function filterCities(text) {
 }
 
 function Search({ handleChangeCity }) {
-  const [text, setText] = useState('');
+  const [value, setValue] = useState('');
   const [results, setResults] = useState([]);
-  const [debounceText] = useDebounce(text, 500);
+
+  const debounced = useDebouncedCallback((val) => {
+    setValue(val);
+  }, 300);
 
   const handleChange = (id) => {
     handleChangeCity(id);
 
-    setText('');
+    setValue('');
     setResults([]);
   };
 
   useEffect(() => {
-    const cities = filterCities(debounceText);
+    const cities = filterCities(value);
 
     setResults(cities);
-  }, [debounceText]);
+  }, [value]);
 
+  /*
   useEffect(() => {
     console.log(results);
   }, [results]);
+  */
 
   return (
     <div className='search relative max-w-xs z-20'>
@@ -47,12 +52,9 @@ function Search({ handleChangeCity }) {
         id='s'
         placeholder='Search for a city'
         className='border border-darkblue rounded w-full h-12 px-3 text-lg'
-        value={text}
-        onChange={(e) => setText(e.target.value)}
+        onChange={(e) => debounced(e.target.value)}
       />
-      {debounceText && (
-        <SearchResults cities={results} handleChange={handleChange} />
-      )}
+      {value && <SearchResults cities={results} handleChange={handleChange} />}
     </div>
   );
 }
