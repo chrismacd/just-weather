@@ -1,22 +1,27 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Search from './components/Search';
 import Details from './components/Details';
 import Favourites from './components/Favourites';
 import './App.css';
 
 function App() {
-  const [city, setCity] = useState(0);
+  const [cityId, setCityId] = useState(0);
+  const [cityDetails, setCityDetails] = useState(null);
 
   const handleChangeCity = (id) => {
-    setCity(id);
-
-    console.log(id);
+    setCityId(id);
   };
+
+  useEffect(() => {
+    console.log('city change', cityId);
+
+    setCityDetails({});
+  }, [cityId]);
 
   return (
     <div className='container mx-auto px-6'>
       <Search handleChangeCity={handleChangeCity} />
-      {city > 0 && <Details />}
+      {cityDetails && <Details />}
       <Favourites />
     </div>
   );
