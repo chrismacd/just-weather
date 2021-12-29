@@ -21,24 +21,31 @@ function filterCities(text) {
 
 function Search({ handleChangeCity }) {
   const [value, setValue] = useState('');
+  const [debouncedValue, setDebouncedValue] = useState('');
   const [results, setResults] = useState([]);
 
   const debounced = useDebouncedCallback((val) => {
-    setValue(val);
+    setDebouncedValue(val);
   }, 300);
 
   const handleChange = (id) => {
     handleChangeCity(id);
 
     setValue('');
+    setDebouncedValue('');
     setResults([]);
+  };
+
+  const handleInputChange = (val) => {
+    debounced(val);
+    setValue(val);
   };
 
   useEffect(() => {
     const cities = filterCities(value);
 
     setResults(cities);
-  }, [value]);
+  }, [debouncedValue]);
 
   /*
   useEffect(() => {
@@ -52,12 +59,13 @@ function Search({ handleChangeCity }) {
         type='text'
         name='s'
         id='s'
+        value={value}
         placeholder='Search for a city'
         autoComplete='off'
         className='border border-darkblue rounded w-full h-12 px-3 text-lg'
-        onChange={(e) => debounced(e.target.value)}
+        onChange={(e) => handleInputChange(e.target.value)}
       />
-      {value.length >= minlength && (
+      {debouncedValue.length >= minlength && (
         <SearchResults cities={results} handleChange={handleChange} />
       )}
     </div>
