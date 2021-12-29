@@ -15,7 +15,7 @@ function App() {
   const { data: cityWeather } = useFetchWeather(cityId);
 
   return (
-    <div className='container mx-auto px-6'>
+    <div className='container mx-auto px-6 py-4'>
       <Search handleChangeCity={handleChangeCity} />
       {cityWeather && (
         <Details
