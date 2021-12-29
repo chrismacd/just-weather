@@ -1,28 +1,16 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useDebouncedCallback } from 'use-debounce';
+import useFilterCities from '../hooks/useFilterCities';
 import SearchResults from './SearchResults';
 
-const data = require('../data/city.list.min.json');
-
-const minlength = 3;
-
-function filterCities(text) {
-  if (text.length >= minlength) {
-    const regex = new RegExp(`^${text}`, 'gi');
-    const filtered = data.filter((city) => {
-      return city.name.search(regex) > -1;
-    });
-
-    return filtered.sort((a, b) => (a.name < b.name ? -1 : 1));
-  }
-
-  return [];
-}
-
 function Search({ handleChangeCity }) {
+  const minlength = 3;
   const [value, setValue] = useState('');
   const [debouncedValue, setDebouncedValue] = useState('');
-  const [results, setResults] = useState([]);
+  const { data: searchResults, isLoading } = useFilterCities(
+    debouncedValue,
+    minlength
+  );
 
   const debounced = useDebouncedCallback((val) => {
     setDebouncedValue(val);
@@ -33,25 +21,12 @@ function Search({ handleChangeCity }) {
 
     setValue('');
     setDebouncedValue('');
-    setResults([]);
   };
 
   const handleInputChange = (val) => {
     debounced(val);
     setValue(val);
   };
-
-  useEffect(() => {
-    const cities = filterCities(value);
-
-    setResults(cities);
-  }, [debouncedValue]);
-
-  /*
-  useEffect(() => {
-    console.log(results);
-  }, [results]);
-  */
 
   return (
     <div className='search relative max-w-xs z-20'>
@@ -65,8 +40,8 @@ function Search({ handleChangeCity }) {
         className='border border-darkblue rounded w-full h-12 px-3 text-lg'
         onChange={(e) => handleInputChange(e.target.value)}
       />
-      {debouncedValue.length >= minlength && (
-        <SearchResults cities={results} handleChange={handleChange} />
+      {debouncedValue.length >= minlength && !isLoading && (
+        <SearchResults cities={searchResults} handleChange={handleChange} />
       )}
     </div>
   );
