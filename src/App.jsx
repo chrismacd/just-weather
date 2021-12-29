@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import useFetchWeather from './hooks/useFetchWeather';
 import Search from './components/Search';
 import Details from './components/Details';
 import Favourites from './components/Favourites';
@@ -6,17 +7,22 @@ import './App.css';
 
 function App() {
   const [cityId, setCityId] = useState(0);
+  /*
   const [cityWeather, setCityWeather] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
+  */
 
   const handleChangeCity = (id) => {
     setCityId(id);
   };
 
+  const { data: cityWeather } = useFetchWeather(cityId);
+
   useEffect(() => {
     console.log('city change', cityId);
 
+    /*
     if (cityId > 0) {
       fetch(
         `https://api.openweathermap.org/data/2.5/weather?id=${cityId}&appid=a61518b113182a0a4b4cc2468498c201`
@@ -46,6 +52,7 @@ function App() {
           setError(err.message);
         });
     }
+    */
   }, [cityId]);
 
   return (
