@@ -3,6 +3,7 @@ import useFetchWeather from './hooks/useFetchWeather';
 import Search from './components/Search';
 import Details from './components/Details';
 import Favourites from './components/Favourites';
+import Spinner from './components/Spinner';
 import './App.css';
 
 function App() {
@@ -75,7 +76,7 @@ function App() {
             handleFavouriteClick={handleFavouriteClick}
           />
         )}
-        {isLoading && <div>Loading...</div>}
+        {isLoading && <Spinner />}
         {error && <div>{error}</div>}
       </div>
     </div>
