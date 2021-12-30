@@ -6,24 +6,28 @@ import Favourites from './components/Favourites';
 import './App.css';
 
 function App() {
+  const storedFavourites = JSON.parse(
+    localStorage.getItem('favourites') || '[]'
+  );
+
   const [cityId, setCityId] = useState(0);
-  const [favourites, setFavourites] = useState([]);
+  const [favourites, setFavourites] = useState(storedFavourites);
 
   const handleChangeCity = (id) => {
     setCityId(id);
   };
 
   const handleFavouriteClick = (id) => {
-    if (favourites.includes(id)) {
-      const index = favourites.indexOf(id);
-      const newFavourites = [...favourites];
+    const newFavourites = [...favourites];
+    const index = favourites.indexOf(id);
+
+    if (index > -1) {
       newFavourites.splice(index, 1);
-      setFavourites(newFavourites);
     } else {
-      const newFavourites = [...favourites];
       newFavourites.push(id);
-      setFavourites(newFavourites);
     }
+
+    setFavourites(newFavourites);
 
     console.log(favourites);
   };
@@ -43,7 +47,12 @@ function App() {
           handleFavouriteClick={handleFavouriteClick}
         />
       )}
-      <Favourites favourites={favourites} handleChangeCity={handleChangeCity} />
+      {favourites.length > 0 && (
+        <Favourites
+          favourites={favourites}
+          handleChangeCity={handleChangeCity}
+        />
+      )}
     </div>
   );
 }
