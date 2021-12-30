@@ -14,13 +14,14 @@ function Favourites({
   handleOrderChange,
 }) {
   return (
-    <div className='favourites'>
-      <h1>Favourites list</h1>
-
-      <button type='button' onClick={handleOrderChange}>
-        {orderAsc && <FontAwesomeIcon icon={arrowUp} />}
-        {!orderAsc && <FontAwesomeIcon icon={arrowDown} />}
-      </button>
+    <div className='favourites lg:col-start-1'>
+      <h1 className='text-lg font-bold'>
+        Your Favourites
+        <button className='ml-2 mb-3' type='button' onClick={handleOrderChange}>
+          {orderAsc && <FontAwesomeIcon icon={arrowUp} />}
+          {!orderAsc && <FontAwesomeIcon icon={arrowDown} />}
+        </button>
+      </h1>
 
       <ul>
         {favourites.map((favItem) => {

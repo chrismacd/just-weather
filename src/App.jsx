@@ -53,26 +53,29 @@ function App() {
 
   return (
     <div className='container mx-auto px-6 py-4'>
-      <Search handleChangeCity={handleChangeCity} />
-      {cityWeather && (
-        <Details
-          id={cityId}
-          name={cityWeather.name}
-          temperature={cityWeather.temperature}
-          humidity={cityWeather.humidity}
-          windSpeed={cityWeather.windSpeed}
-          isFavourite={isFavourite()}
-          handleFavouriteClick={handleFavouriteClick}
-        />
-      )}
-      {favourites.length > 0 && (
-        <Favourites
-          favourites={favourites}
-          orderAsc={orderAsc}
-          handleChangeCity={handleChangeCity}
-          handleOrderChange={handleOrderChange}
-        />
-      )}
+      <div className='grid gap-4 lg:grid-cols-3'>
+        <Search handleChangeCity={handleChangeCity} />
+        {favourites.length > 0 && (
+          <Favourites
+            favourites={favourites}
+            orderAsc={orderAsc}
+            handleChangeCity={handleChangeCity}
+            handleOrderChange={handleOrderChange}
+          />
+        )}
+        {cityWeather && (
+          <Details
+            id={cityId}
+            name={cityWeather.name}
+            country={cityWeather.country}
+            temperature={cityWeather.temperature}
+            humidity={cityWeather.humidity}
+            windSpeed={cityWeather.windSpeed}
+            isFavourite={isFavourite()}
+            handleFavouriteClick={handleFavouriteClick}
+          />
+        )}
+      </div>
     </div>
   );
 }

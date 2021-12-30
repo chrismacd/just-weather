@@ -25,6 +25,7 @@ const useFetchWeather = (id) => {
         .then((apiData) => {
           const weather = {
             name: apiData.name,
+            country: apiData.sys.country,
             temperature: Math.round(Number(apiData.main.temp) - 273.15),
             humidity: apiData.main.humidity,
             windSpeed: apiData.wind.speed,

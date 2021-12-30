@@ -26,7 +26,7 @@ function Search({ handleChangeCity }) {
   };
 
   return (
-    <div className='search relative max-w-xs mx-auto z-20'>
+    <div className='search relative z-20 lg:col-start-2'>
       <input
         type='text'
         name='s'
