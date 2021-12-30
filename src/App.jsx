@@ -63,6 +63,7 @@ function App() {
             orderAsc={orderAsc}
             handleChangeCity={handleChangeCity}
             handleOrderChange={handleOrderChange}
+            handleFavouriteClick={handleFavouriteClick}
           />
         )}
         {cityWeather && (

@@ -12,6 +12,7 @@ function Favourites({
   orderAsc,
   handleChangeCity,
   handleOrderChange,
+  handleFavouriteClick,
 }) {
   return (
     <div className='favourites lg:col-start-1 pt-4'>
@@ -33,7 +34,9 @@ function Favourites({
               name={city.name}
               state={city.state}
               country={city.country}
+              hasDelete
               handleChange={handleChangeCity}
+              handleFavouriteClick={handleFavouriteClick}
               key={city.id}
             />
           );
