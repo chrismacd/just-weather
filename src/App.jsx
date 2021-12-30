@@ -68,6 +68,7 @@ function App() {
       {favourites.length > 0 && (
         <Favourites
           favourites={favourites}
+          orderAsc={orderAsc}
           handleChangeCity={handleChangeCity}
           handleOrderChange={handleOrderChange}
         />

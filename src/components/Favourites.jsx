@@ -1,14 +1,25 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faLongArrowAltUp as arrowUp,
+  faLongArrowAltDown as arrowDown,
+} from '@fortawesome/free-solid-svg-icons';
 import City from './City';
 
 const cityList = require('../data/city.list.min.json');
 
-function Favourites({ favourites, handleChangeCity, handleOrderChange }) {
+function Favourites({
+  favourites,
+  orderAsc,
+  handleChangeCity,
+  handleOrderChange,
+}) {
   return (
     <div className='favourites'>
       <h1>Favourites list</h1>
 
       <button type='button' onClick={handleOrderChange}>
-        order
+        {orderAsc && <FontAwesomeIcon icon={arrowUp} />}
+        {!orderAsc && <FontAwesomeIcon icon={arrowDown} />}
       </button>
 
       <ul>
