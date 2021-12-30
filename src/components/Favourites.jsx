@@ -2,10 +2,14 @@ import City from './City';
 
 const cityList = require('../data/city.list.min.json');
 
-function Favourites({ favourites, handleChangeCity }) {
+function Favourites({ favourites, handleChangeCity, handleOrderChange }) {
   return (
     <div className='favourites'>
       <h1>Favourites list</h1>
+
+      <button type='button' onClick={handleOrderChange}>
+        order
+      </button>
 
       <ul>
         {favourites.map((favItem) => {

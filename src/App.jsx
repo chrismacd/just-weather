@@ -12,7 +12,7 @@ function App() {
 
   const [cityId, setCityId] = useState(0);
   const [favourites, setFavourites] = useState(storedFavourites);
-  const [orderAsc] = useState(true);
+  const [orderAsc, setOrderAsc] = useState(true);
 
   const handleChangeCity = (id) => {
     setCityId(id);
@@ -29,14 +29,20 @@ function App() {
     }
 
     const sorted = newFavourites.sort((a, b) => (a.name > b.name ? 1 : -1));
+    localStorage.setItem('favourites', JSON.stringify(sorted));
+
     if (!orderAsc) {
       sorted.reverse();
     }
 
     setFavourites(sorted);
-    localStorage.setItem('favourites', JSON.stringify(sorted));
 
     console.log(sorted);
+  };
+
+  const handleOrderChange = () => {
+    setFavourites(favourites.reverse());
+    setOrderAsc(!orderAsc);
   };
 
   const { data: cityWeather } = useFetchWeather(cityId);
@@ -58,6 +64,7 @@ function App() {
         <Favourites
           favourites={favourites}
           handleChangeCity={handleChangeCity}
+          handleOrderChange={handleOrderChange}
         />
       )}
     </div>
