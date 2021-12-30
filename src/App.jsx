@@ -14,6 +14,8 @@ function App() {
   const [favourites, setFavourites] = useState(storedFavourites);
   const [orderAsc, setOrderAsc] = useState(true);
 
+  const { data: cityWeather, isLoading, error } = useFetchWeather(cityId);
+
   const handleChangeCity = (id) => {
     setCityId(id);
   };
@@ -45,8 +47,6 @@ function App() {
     setOrderAsc(!orderAsc);
   };
 
-  const { data: cityWeather } = useFetchWeather(cityId);
-
   const isFavourite = () => {
     return favourites.findIndex((city) => city.id === cityId) > -1;
   };
@@ -75,6 +75,8 @@ function App() {
             handleFavouriteClick={handleFavouriteClick}
           />
         )}
+        {isLoading && <div>Loading...</div>}
+        {error && <div>{error}</div>}
       </div>
     </div>
   );

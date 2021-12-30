@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from 'react';
 const useFetchWeather = (id) => {
   const cache = useRef({});
   const [data, setData] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -13,6 +13,9 @@ const useFetchWeather = (id) => {
       const weather = cache.current[id];
       setData(weather);
     } else {
+      setData(null);
+      setIsLoading(true);
+
       fetch(
         `https://api.openweathermap.org/data/2.5/weather?id=${id}&appid=a61518b113182a0a4b4cc2468498c201`
       )
