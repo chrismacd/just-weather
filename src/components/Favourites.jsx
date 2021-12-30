@@ -8,8 +8,8 @@ function Favourites({ favourites, handleChangeCity }) {
       <h1>Favourites list</h1>
 
       <ul>
-        {favourites.map((id) => {
-          const city = cityList.find((item) => item.id === id);
+        {favourites.map((favItem) => {
+          const city = cityList.find((item) => item.id === favItem.id);
 
           return (
             <City

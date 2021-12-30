@@ -14,7 +14,7 @@ function Details({
         <li>Wind speed: {windSpeed}m/s</li>
         <li>Humidity: {humidity}%</li>
       </ul>
-      <button type='button' onClick={() => handleFavouriteClick(id)}>
+      <button type='button' onClick={() => handleFavouriteClick(id, name)}>
         Fave
       </button>
     </div>

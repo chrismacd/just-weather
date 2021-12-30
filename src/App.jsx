@@ -12,24 +12,31 @@ function App() {
 
   const [cityId, setCityId] = useState(0);
   const [favourites, setFavourites] = useState(storedFavourites);
+  const [orderAsc] = useState(true);
 
   const handleChangeCity = (id) => {
     setCityId(id);
   };
 
-  const handleFavouriteClick = (id) => {
+  const handleFavouriteClick = (id, name) => {
     const newFavourites = [...favourites];
-    const index = favourites.indexOf(id);
+    const index = favourites.findIndex((city) => city.id === id);
 
     if (index > -1) {
       newFavourites.splice(index, 1);
     } else {
-      newFavourites.push(id);
+      newFavourites.push({ id, name });
     }
 
-    setFavourites(newFavourites);
+    const sorted = newFavourites.sort((a, b) => (a.name > b.name ? 1 : -1));
+    if (!orderAsc) {
+      sorted.reverse();
+    }
 
-    console.log(favourites);
+    setFavourites(sorted);
+    localStorage.setItem('favourites', JSON.stringify(sorted));
+
+    console.log(sorted);
   };
 
   const { data: cityWeather } = useFetchWeather(cityId);
