@@ -43,7 +43,7 @@ function App() {
           handleFavouriteClick={handleFavouriteClick}
         />
       )}
-      <Favourites favourites={favourites} />
+      <Favourites favourites={favourites} handleChangeCity={handleChangeCity} />
     </div>
   );
 }
