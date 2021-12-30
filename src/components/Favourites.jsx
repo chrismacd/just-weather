@@ -42,7 +42,7 @@ function Favourites({
                 state={city.state}
                 country={city.country}
                 hasDelete
-                handleChange={handleChangeCity}
+                handleCitySelect={handleChangeCity}
                 handleFavouriteClick={handleFavouriteClick}
                 key={city.id}
               />

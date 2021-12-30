@@ -1,6 +1,6 @@
 import City from './City';
 
-function SearchResults({ cities, handleChange }) {
+function SearchResults({ cities, handleCitySelect }) {
   console.log(`SearchResults: ${cities}`);
 
   return (
@@ -12,7 +12,7 @@ function SearchResults({ cities, handleChange }) {
             name={city.name}
             state={city.state}
             country={city.country}
-            handleChange={handleChange}
+            handleCitySelect={handleCitySelect}
             key={city.id}
           />
         ))}

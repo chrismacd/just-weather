@@ -8,7 +8,7 @@ function City({
   state,
   country,
   hasDelete = false,
-  handleChange,
+  handleCitySelect,
   handleFavouriteClick = null,
 }) {
   return (
@@ -16,7 +16,7 @@ function City({
       <button
         className='text-sm flex w-full items-center'
         type='button'
-        onClick={() => handleChange(id)}
+        onClick={() => handleCitySelect(id)}
       >
         <Flag countryCode={country} />
         <span>

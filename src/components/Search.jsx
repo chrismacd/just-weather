@@ -13,7 +13,7 @@ function Search({ handleChangeCity }) {
     setDebouncedValue(val);
   }, 300);
 
-  const handleChange = (id) => {
+  const handleCitySelect = (id) => {
     handleChangeCity(id);
 
     setValue('');
@@ -38,7 +38,10 @@ function Search({ handleChangeCity }) {
         onChange={(e) => handleInputChange(e.target.value)}
       />
       {searchResults && (
-        <SearchResults cities={searchResults} handleChange={handleChange} />
+        <SearchResults
+          cities={searchResults}
+          handleCitySelect={handleCitySelect}
+        />
       )}
     </div>
   );
