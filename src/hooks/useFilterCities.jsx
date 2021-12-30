@@ -3,8 +3,6 @@ import { useState, useEffect } from 'react';
 const cityList = require('../data/city.list.min.json');
 
 const useFilterCities = (value, minlength = 3) => {
-  console.log(`useFilterCities: ${value}`);
-
   const [data, setData] = useState(null);
 
   useEffect(() => {
