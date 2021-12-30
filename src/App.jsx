@@ -54,8 +54,9 @@ function App() {
 
   return (
     <div className='container mx-auto px-6 py-4'>
-      <div className='grid gap-4 lg:grid-cols-3'>
+      <div className='grid lg:grid-cols-3'>
         <Search handleChangeCity={handleChangeCity} />
+        <div className='lg:col-span-3 lg:border-lightgrey lg:border-b lg:p-2' />
         {favourites.length > 0 && (
           <Favourites
             favourites={favourites}

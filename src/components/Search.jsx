@@ -34,7 +34,7 @@ function Search({ handleChangeCity }) {
         value={value}
         placeholder='Search for a city'
         autoComplete='off'
-        className='border border-darkblue rounded w-full h-12 px-3 text-lg'
+        className='border border-lightgrey rounded w-full h-12 px-3 text-lg'
         onChange={(e) => handleInputChange(e.target.value)}
       />
       {searchResults && (

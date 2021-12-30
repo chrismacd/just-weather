@@ -14,7 +14,7 @@ function Favourites({
   handleOrderChange,
 }) {
   return (
-    <div className='favourites lg:col-start-1'>
+    <div className='favourites lg:col-start-1 pt-4'>
       <h1 className='text-lg font-bold'>
         Your Favourites
         <button className='ml-2 mb-3' type='button' onClick={handleOrderChange}>

@@ -5,6 +5,7 @@ module.exports = {
       darkblue: '#031767',
       lightblue: '#f3f4fa',
       gold: '#ffd700',
+      lightgrey: '#dddddd',
       white: '#ffffff',
     },
     fontFamily: {
