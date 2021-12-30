@@ -47,6 +47,10 @@ function App() {
 
   const { data: cityWeather } = useFetchWeather(cityId);
 
+  const isFavourite = () => {
+    return favourites.findIndex((city) => city.id === cityId) > -1;
+  };
+
   return (
     <div className='container mx-auto px-6 py-4'>
       <Search handleChangeCity={handleChangeCity} />
@@ -57,6 +61,7 @@ function App() {
           temperature={cityWeather.temperature}
           humidity={cityWeather.humidity}
           windSpeed={cityWeather.windSpeed}
+          isFavourite={isFavourite()}
           handleFavouriteClick={handleFavouriteClick}
         />
       )}

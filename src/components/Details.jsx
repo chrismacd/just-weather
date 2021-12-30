@@ -1,9 +1,14 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar as starSolid } from '@fortawesome/free-solid-svg-icons';
+import { faStar as starOutline } from '@fortawesome/free-regular-svg-icons';
+
 function Details({
   id,
   name,
   temperature,
   windSpeed,
   humidity,
+  isFavourite,
   handleFavouriteClick,
 }) {
   return (
@@ -15,7 +20,8 @@ function Details({
         <li>Humidity: {humidity}%</li>
       </ul>
       <button type='button' onClick={() => handleFavouriteClick(id, name)}>
-        Fave
+        {isFavourite && <FontAwesomeIcon icon={starSolid} />}
+        {!isFavourite && <FontAwesomeIcon icon={starOutline} />}
       </button>
     </div>
   );
