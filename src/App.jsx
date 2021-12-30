@@ -27,20 +27,20 @@ function App() {
 
     if (index > -1) {
       newFavourites.splice(index, 1);
+      localStorage.setItem('favourites', JSON.stringify(newFavourites));
+
+      setFavourites(newFavourites);
     } else {
       newFavourites.push({ id, name });
+      const sorted = newFavourites.sort((a, b) => (a.name > b.name ? 1 : -1));
+      localStorage.setItem('favourites', JSON.stringify(sorted));
+
+      if (!orderAsc) {
+        sorted.reverse();
+      }
+
+      setFavourites(sorted);
     }
-
-    const sorted = newFavourites.sort((a, b) => (a.name > b.name ? 1 : -1));
-    localStorage.setItem('favourites', JSON.stringify(sorted));
-
-    if (!orderAsc) {
-      sorted.reverse();
-    }
-
-    setFavourites(sorted);
-
-    console.log(sorted);
   };
 
   const handleOrderChange = () => {
