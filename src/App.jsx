@@ -7,9 +7,25 @@ import './App.css';
 
 function App() {
   const [cityId, setCityId] = useState(0);
+  const [favourites, setFavourites] = useState([]);
 
   const handleChangeCity = (id) => {
     setCityId(id);
+  };
+
+  const handleFavouriteClick = (id) => {
+    if (favourites.includes(id)) {
+      const index = favourites.indexOf(id);
+      const newFavourites = [...favourites];
+      newFavourites.splice(index, 1);
+      setFavourites(newFavourites);
+    } else {
+      const newFavourites = [...favourites];
+      newFavourites.push(id);
+      setFavourites(newFavourites);
+    }
+
+    console.log(favourites);
   };
 
   const { data: cityWeather } = useFetchWeather(cityId);
@@ -19,13 +35,15 @@ function App() {
       <Search handleChangeCity={handleChangeCity} />
       {cityWeather && (
         <Details
+          id={cityId}
           name={cityWeather.name}
           temperature={cityWeather.temperature}
           humidity={cityWeather.humidity}
           windSpeed={cityWeather.windSpeed}
+          handleFavouriteClick={handleFavouriteClick}
         />
       )}
-      <Favourites />
+      <Favourites favourites={favourites} />
     </div>
   );
 }

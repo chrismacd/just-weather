@@ -1,8 +1,6 @@
 const cityList = require('../data/city.list.min.json');
 
-function Favourites() {
-  const favourites = JSON.parse(localStorage.getItem('favourites') || '[]');
-
+function Favourites({ favourites }) {
   return (
     favourites && (
       <div className='favourites'>

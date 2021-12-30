@@ -1,4 +1,11 @@
-function Details({ name, temperature, windSpeed, humidity }) {
+function Details({
+  id,
+  name,
+  temperature,
+  windSpeed,
+  humidity,
+  handleFavouriteClick,
+}) {
   return (
     <div className='details relative z-10 border border-darkblue max-w-xs mx-auto mt-6 p-3 rounded'>
       <h1 className='font-bold text-lg'>{name}</h1>
@@ -7,6 +14,9 @@ function Details({ name, temperature, windSpeed, humidity }) {
         <li>Wind speed: {windSpeed}m/s</li>
         <li>Humidity: {humidity}%</li>
       </ul>
+      <button type='button' onClick={() => handleFavouriteClick(id)}>
+        Fave
+      </button>
     </div>
   );
 }
