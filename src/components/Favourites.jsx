@@ -15,7 +15,7 @@ function Favourites({
   handleFavouriteClick,
 }) {
   return (
-    <div className='favourites lg:col-start-1 pt-4'>
+    <div className='favourites lg:col-start-1 py-4 lg:border-r lg:border-lightgrey'>
       <h1 className='text-lg font-bold mb-3'>
         Your Favourites
         {favourites.length > 0 && (

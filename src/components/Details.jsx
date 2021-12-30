@@ -14,7 +14,7 @@ function Details({
   handleFavouriteClick,
 }) {
   return (
-    <div className='details relative pt-4 z-10 lg:border-l lg:border-lightgrey lg:p-4'>
+    <div className='details relative py-4 z-10 lg:p-4'>
       <h1 className='font-bold text-lg flex w-full items-center mb-3'>
         <Flag countryCode={country} />
         {name}
