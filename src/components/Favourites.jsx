@@ -16,32 +16,40 @@ function Favourites({
 }) {
   return (
     <div className='favourites lg:col-start-1 pt-4'>
-      <h1 className='text-lg font-bold'>
+      <h1 className='text-lg font-bold mb-3'>
         Your Favourites
-        <button className='ml-2 mb-3' type='button' onClick={handleOrderChange}>
-          {orderAsc && <FontAwesomeIcon icon={arrowUp} />}
-          {!orderAsc && <FontAwesomeIcon icon={arrowDown} />}
-        </button>
+        {favourites.length > 0 && (
+          <button className='ml-2' type='button' onClick={handleOrderChange}>
+            {orderAsc && <FontAwesomeIcon icon={arrowUp} />}
+            {!orderAsc && <FontAwesomeIcon icon={arrowDown} />}
+          </button>
+        )}
       </h1>
 
-      <ul>
-        {favourites.map((favItem) => {
-          const city = cityList.find((item) => item.id === favItem.id);
+      {favourites.length === 0 && (
+        <p className='text-sm'>You haven&apos;t saved any favourites yet.</p>
+      )}
 
-          return (
-            <City
-              id={city.id}
-              name={city.name}
-              state={city.state}
-              country={city.country}
-              hasDelete
-              handleChange={handleChangeCity}
-              handleFavouriteClick={handleFavouriteClick}
-              key={city.id}
-            />
-          );
-        })}
-      </ul>
+      {favourites.length > 0 && (
+        <ul>
+          {favourites.map((favItem) => {
+            const city = cityList.find((item) => item.id === favItem.id);
+
+            return (
+              <City
+                id={city.id}
+                name={city.name}
+                state={city.state}
+                country={city.country}
+                hasDelete
+                handleChange={handleChangeCity}
+                handleFavouriteClick={handleFavouriteClick}
+                key={city.id}
+              />
+            );
+          })}
+        </ul>
+      )}
     </div>
   );
 }

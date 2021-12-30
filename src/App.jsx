@@ -57,15 +57,15 @@ function App() {
       <div className='grid lg:grid-cols-3'>
         <Search handleChangeCity={handleChangeCity} />
         <div className='lg:col-span-3 lg:border-lightgrey lg:border-b lg:p-2' />
-        {favourites.length > 0 && (
-          <Favourites
-            favourites={favourites}
-            orderAsc={orderAsc}
-            handleChangeCity={handleChangeCity}
-            handleOrderChange={handleOrderChange}
-            handleFavouriteClick={handleFavouriteClick}
-          />
-        )}
+
+        <Favourites
+          favourites={favourites}
+          orderAsc={orderAsc}
+          handleChangeCity={handleChangeCity}
+          handleOrderChange={handleOrderChange}
+          handleFavouriteClick={handleFavouriteClick}
+        />
+
         {cityWeather && (
           <Details
             id={cityId}
