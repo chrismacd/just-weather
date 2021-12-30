@@ -28,7 +28,7 @@ function City({
         <button
           className='absolute right-2 top-1/2 -mt-2 hidden group-hover:block'
           type='button'
-          onClick={() => handleFavouriteClick(id, name)}
+          onClick={() => handleFavouriteClick(id)}
         >
           <FontAwesomeIcon className='h-4 block' icon={times} />
         </button>

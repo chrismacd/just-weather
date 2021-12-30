@@ -11,7 +11,7 @@ function App() {
     localStorage.getItem('favourites') || '[]'
   );
 
-  const [cityId, setCityId] = useState(0);
+  const [cityId, setCityId] = useState(null);
   const [favourites, setFavourites] = useState(storedFavourites);
   const [orderAsc, setOrderAsc] = useState(true);
 
@@ -21,7 +21,7 @@ function App() {
     setCityId(id);
   };
 
-  const handleFavouriteClick = (id, name) => {
+  const handleFavouriteClick = (id, name = '') => {
     const newFavourites = [...favourites];
     const index = favourites.findIndex((city) => city.id === id);
 

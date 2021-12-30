@@ -28,18 +28,20 @@ function Details({
         </button>
       </h1>
       <table className='table-fixed w-full text-sm'>
-        <tr>
-          <td className='py-2'>Temperature:</td>
-          <td className='py-2'>{temperature}&deg;C</td>
-        </tr>
-        <tr>
-          <td className='py-2'>Wind speed:</td>
-          <td className='py-2'>{windSpeed}m/s</td>
-        </tr>
-        <tr>
-          <td className='py-2'>Humidity:</td>
-          <td className='py-2'>{humidity}%</td>
-        </tr>
+        <tbody>
+          <tr>
+            <td className='py-2'>Temperature:</td>
+            <td className='py-2'>{temperature}&deg;C</td>
+          </tr>
+          <tr>
+            <td className='py-2'>Wind speed:</td>
+            <td className='py-2'>{windSpeed}m/s</td>
+          </tr>
+          <tr>
+            <td className='py-2'>Humidity:</td>
+            <td className='py-2'>{humidity}%</td>
+          </tr>
+        </tbody>
       </table>
     </div>
   );
