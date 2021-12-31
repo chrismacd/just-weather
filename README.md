@@ -51,6 +51,10 @@ Lints the JS.
 
 Lints the CSS.
 
+### `npm run tsc`
+
+Runs Typescript checking.
+
 ### `npm run checks`
 
 Runs:
