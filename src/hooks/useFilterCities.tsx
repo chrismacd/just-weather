@@ -1,22 +1,10 @@
 import { useState, useEffect } from 'react';
-
-interface City {
-  id: number;
-  name: string;
-  state: string;
-  country: string;
-  coord: {
-    long: string;
-    lat: string;
-  };
-}
-
-type Data = City[] | null;
+import City from '../interfaces/City';
 
 const cityList: City[] = require('../data/city.list.min.json');
 
 const useFilterCities = (value: string, minlength = 3) => {
-  const [data, setData] = useState<Data>(null);
+  const [data, setData] = useState<City[] | null>(null);
 
   useEffect(() => {
     if (value.length >= minlength) {
