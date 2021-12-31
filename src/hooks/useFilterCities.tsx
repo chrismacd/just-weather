@@ -15,7 +15,7 @@ type Data = City[] | null;
 
 const cityList: City[] = require('../data/city.list.min.json');
 
-const useFilterCities = (value: string, minlength: number = 3) => {
+const useFilterCities = (value: string, minlength = 3) => {
   const [data, setData] = useState<Data>(null);
 
   useEffect(() => {
