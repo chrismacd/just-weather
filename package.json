@@ -27,9 +27,11 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test:nowatch": "react-scripts test --watchAll=false",
     "eject": "react-scripts eject",
-    "lint": "eslint src/**/*.jsx",
-    "lint:css": "stylelint \"**/*.css\""
+    "lint:js": "eslint src/**/*.jsx",
+    "lint:css": "stylelint \"**/*.css\"",
+    "checks": "npm run lint:js && npm run lint:css && npm run test:nowatch"
   },
   "browserslist": {
     "production": [
@@ -66,10 +68,6 @@
   "jest": {
     "moduleNameMapper": {
       "\\.(css|less)$": "<rootDir>/__mocks__/styleMock.js"
-    },
-    "testEnvironment": "jsdom",
-    "setupFilesAfterEnv": [
-      "<rootDir>/src/setupTests.js"
-    ]
+    }
   }
 }
