@@ -5,23 +5,25 @@ import Details from './components/Details';
 import Favourites from './components/Favourites';
 import Spinner from './components/Spinner';
 import './App.css';
+import FavouriteInterface from './interfaces/FavouriteInterface';
 
 function App() {
-  const storedFavourites = JSON.parse(
+  const storedFavourites: FavouriteInterface[] = JSON.parse(
     localStorage.getItem('favourites') || '[]'
   );
 
-  const [cityId, setCityId] = useState(null);
-  const [favourites, setFavourites] = useState(storedFavourites);
-  const [orderAsc, setOrderAsc] = useState(true);
+  const [cityId, setCityId] = useState<number | null>(null);
+  const [favourites, setFavourites] =
+    useState<FavouriteInterface[]>(storedFavourites);
+  const [orderAsc, setOrderAsc] = useState<boolean>(true);
 
   const { data: cityWeather, isLoading, error } = useFetchWeather(cityId);
 
-  const handleChangeCity = (id) => {
+  const handleChangeCity = (id: number) => {
     setCityId(id);
   };
 
-  const handleFavouriteClick = (id, name = '') => {
+  const handleFavouriteClick = (id: number, name = '') => {
     const newFavourites = [...favourites];
     const index = favourites.findIndex((city) => city.id === id);
 
@@ -68,12 +70,7 @@ function App() {
 
         {cityWeather && (
           <Details
-            id={cityId}
-            name={cityWeather.name}
-            country={cityWeather.country}
-            temperature={cityWeather.temperature}
-            humidity={cityWeather.humidity}
-            windSpeed={cityWeather.windSpeed}
+            cityWeather={cityWeather}
             isFavourite={isFavourite()}
             handleFavouriteClick={handleFavouriteClick}
           />

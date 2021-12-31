@@ -7,14 +7,14 @@ interface Props {
   city: CityInterface;
   hasDelete: boolean;
   handleCitySelect: (id: number) => void;
-  handleFavouriteClick: (id: number) => void;
+  handleFavouriteClick: ((id: number) => void) | null;
 }
 
 function City({
   city,
   hasDelete = false,
   handleCitySelect,
-  handleFavouriteClick,
+  handleFavouriteClick = null,
 }: Props) {
   return (
     <div className='px-2 py-1 hover:bg-lightblue relative group'>
@@ -29,7 +29,7 @@ function City({
           {city.state && `, ${city.state}`}
         </span>
       </button>
-      {hasDelete && (
+      {hasDelete && handleFavouriteClick && (
         <button
           className='absolute right-2 top-1/2 -mt-2 hidden group-hover:block'
           type='button'

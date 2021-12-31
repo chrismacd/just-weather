@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import CityWeatherInterface from '../interfaces/CityWeatherInterface';
 
-const useFetchWeather = (id: number) => {
+const useFetchWeather = (id: number | null) => {
   const cache = useRef<CityWeatherInterface[]>([]);
   const [data, setData] = useState<CityWeatherInterface | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
