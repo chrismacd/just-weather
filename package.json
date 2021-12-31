@@ -31,7 +31,7 @@
     "eject": "react-scripts eject",
     "lint:js": "eslint src/**/*.jsx",
     "lint:css": "stylelint \"**/*.css\"",
-    "checks": "npm run lint:js && npm run lint:css && npm run test:nowatch"
+    "checks": "npm run lint:js && npm run lint:css && npm run tsc && npm run test:nowatch"
   },
   "browserslist": {
     "production": [

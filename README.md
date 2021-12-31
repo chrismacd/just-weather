@@ -57,7 +57,8 @@ Runs:
 
 1. lint:js
 2. lint:css
-3. test:nowatch
+3. tsc
+4. test:nowatch
 
 ## Notes
 
