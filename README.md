@@ -62,3 +62,5 @@ Runs:
 ## Notes
 
 The city finder is reading and filtering a large JSON file locally. Ideally this functionality should be moved to a server, and the city search sent to the server which can return the filtered list of cities. But for the purpose of this app I've just left it local.
+
+I've also included the .env file in this package just for the purpose of easy review of this app. (It contains the API key)
