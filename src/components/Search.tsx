@@ -38,6 +38,7 @@ function Search({ handleChangeCity }: Props) {
         value={value}
         placeholder='Search for a city'
         autoComplete='off'
+        spellCheck='false'
         className='border border-lightgrey rounded w-full h-12 px-3 text-lg'
         onChange={(e) => handleInputChange(e.target.value)}
       />
