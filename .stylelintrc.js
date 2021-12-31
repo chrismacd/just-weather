@@ -1,5 +1,6 @@
 module.exports = {
   extends: ['stylelint-config-standard'],
+  ignoreFiles: ['build/**/*.css'],
   rules: {
     'no-empty-source': null,
     'string-quotes': 'double',
