@@ -1,9 +1,17 @@
 import { useState, useEffect, useRef } from 'react';
 
-const useFetchWeather = (id) => {
-  const cache = useRef({});
-  const [data, setData] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
+interface CityWeather {
+  name: string;
+  country: string;
+  temperature: number;
+  humidity: number;
+  windSpeed: number;
+}
+
+const useFetchWeather = (id: number) => {
+  const cache = useRef<CityWeather[]>([]);
+  const [data, setData] = useState<CityWeather | null>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -26,7 +34,7 @@ const useFetchWeather = (id) => {
           return response.json();
         })
         .then((apiData) => {
-          const weather = {
+          const weather: CityWeather = {
             name: apiData.name,
             country: apiData.sys.country,
             temperature: Math.round(Number(apiData.main.temp) - 273.15),
