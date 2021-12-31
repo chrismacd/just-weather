@@ -18,7 +18,7 @@ const useFilterCities = (value, minlength = 3) => {
     } else {
       setData(null);
     }
-  }, [value]);
+  }, [value, minlength]);
 
   return { data };
 };
