@@ -3,7 +3,11 @@ import { useDebouncedCallback } from 'use-debounce';
 import useFilterCities from '../hooks/useFilterCities';
 import SearchResults from './SearchResults';
 
-function Search({ handleChangeCity }) {
+interface Props {
+  handleChangeCity: (id: number) => void;
+}
+
+function Search({ handleChangeCity }: Props) {
   const minlength = 3;
   const [value, setValue] = useState('');
   const [debouncedValue, setDebouncedValue] = useState('');
@@ -13,14 +17,14 @@ function Search({ handleChangeCity }) {
     setDebouncedValue(val);
   }, 300);
 
-  const handleCitySelect = (id) => {
+  const handleCitySelect = (id: number) => {
     handleChangeCity(id);
 
     setValue('');
     setDebouncedValue('');
   };
 
-  const handleInputChange = (val) => {
+  const handleInputChange = (val: string) => {
     debounced(val);
     setValue(val);
   };
