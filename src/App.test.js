@@ -3,6 +3,12 @@ import App from './App';
 
 test('renders favourites heading', () => {
   render(<App />);
-  const headingElement = screen.getByText(/your favourites/i);
-  expect(headingElement).toBeInTheDocument();
+  const heading = screen.getByText(/your favourites/i);
+  expect(heading).toBeInTheDocument();
+});
+
+test('renders search input', () => {
+  render(<App />);
+  const input = screen.getByPlaceholderText(/search for a city/i);
+  expect(input).toBeInTheDocument();
 });
