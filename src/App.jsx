@@ -79,7 +79,7 @@ function App() {
           />
         )}
         {isLoading && <Spinner />}
-        {error && <div>{error}</div>}
+        {error && <div className='p-4'>{error}</div>}
       </div>
     </div>
   );
