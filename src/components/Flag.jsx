@@ -2,7 +2,7 @@ import { hasFlag } from 'country-flag-icons';
 import Flags from 'country-flag-icons/react/3x2';
 
 function Flag({ countryCode }) {
-  if (!hasFlag(countryCode)) return '';
+  if (!hasFlag(countryCode)) return <div />;
 
   const CountryFlag = Flags[countryCode];
 

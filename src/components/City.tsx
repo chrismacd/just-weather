@@ -1,34 +1,39 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes as times } from '@fortawesome/free-solid-svg-icons';
 import Flag from './Flag';
+import CityInterface from '../interfaces/CityInterface';
+
+interface Props {
+  city: CityInterface;
+  hasDelete: boolean;
+  handleCitySelect: (id: number) => void;
+  handleFavouriteClick: (id: number) => void;
+}
 
 function City({
-  id,
-  name,
-  state,
-  country,
+  city,
   hasDelete = false,
   handleCitySelect,
-  handleFavouriteClick = null,
-}) {
+  handleFavouriteClick,
+}: Props) {
   return (
     <div className='px-2 py-1 hover:bg-lightblue relative group'>
       <button
         className='text-sm flex w-full items-center'
         type='button'
-        onClick={() => handleCitySelect(id)}
+        onClick={() => handleCitySelect(city.id)}
       >
-        <Flag countryCode={country} />
+        <Flag countryCode={city.country} />
         <span>
-          {name}
-          {state && `, ${state}`}
+          {city.name}
+          {city.state && `, ${city.state}`}
         </span>
       </button>
       {hasDelete && (
         <button
           className='absolute right-2 top-1/2 -mt-2 hidden group-hover:block'
           type='button'
-          onClick={() => handleFavouriteClick(id)}
+          onClick={() => handleFavouriteClick(city.id)}
         >
           <FontAwesomeIcon className='h-4 block' icon={times} />
         </button>

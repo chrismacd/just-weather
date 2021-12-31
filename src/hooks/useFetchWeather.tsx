@@ -1,16 +1,9 @@
 import { useState, useEffect, useRef } from 'react';
-
-interface CityWeather {
-  name: string;
-  country: string;
-  temperature: number;
-  humidity: number;
-  windSpeed: number;
-}
+import CityWeatherInterface from '../interfaces/CityWeatherInterface';
 
 const useFetchWeather = (id: number) => {
-  const cache = useRef<CityWeather[]>([]);
-  const [data, setData] = useState<CityWeather | null>(null);
+  const cache = useRef<CityWeatherInterface[]>([]);
+  const [data, setData] = useState<CityWeatherInterface | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState(null);
 
@@ -34,7 +27,8 @@ const useFetchWeather = (id: number) => {
           return response.json();
         })
         .then((apiData) => {
-          const weather: CityWeather = {
+          const weather: CityWeatherInterface = {
+            id,
             name: apiData.name,
             country: apiData.sys.country,
             temperature: Math.round(Number(apiData.main.temp) - 273.15),

@@ -37,10 +37,7 @@ function Favourites({
 
             return (
               <City
-                id={city.id}
-                name={city.name}
-                state={city.state}
-                country={city.country}
+                city={city}
                 hasDelete
                 handleCitySelect={handleChangeCity}
                 handleFavouriteClick={handleFavouriteClick}

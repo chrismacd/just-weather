@@ -1,4 +1,4 @@
-export default interface City {
+export default interface CityInterface {
   id: number;
   name: string;
   state: string;
