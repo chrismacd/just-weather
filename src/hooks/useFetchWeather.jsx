@@ -17,7 +17,7 @@ const useFetchWeather = (id) => {
       setIsLoading(true);
 
       fetch(
-        `https://api.openweathermap.org/data/2.5/weather?id=${id}&appid=a61518b113182a0a4b4cc2468498c201`
+        `https://api.openweathermap.org/data/2.5/weather?id=${id}&appid=${process.env.REACT_APP_OPENWEATHER_API_KEY}`
       )
         .then((response) => {
           if (!response.ok) {
